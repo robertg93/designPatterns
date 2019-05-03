@@ -1,10 +1,26 @@
 #include <iostream>
 
-using namespace std;
+
+
+class singleton
+ {
+  private:
+        singleton() {}
+        singleton(const singleton &);
+        singleton& operator=(const singleton&);
+        ~singleton() {}
+  public:
+        std::string method() { return "singleton pattern"; }
+        static singleton& getInstance()
+        {
+          static singleton instance;
+          return instance;
+        }
+ };
 
 int main()
 {
-  cout << "Witaj świecie!" << endl;
-  cout << "hello world!" << endl;
+  std::cout << singleton::getInstance().method();
+
   return 0;
 }
